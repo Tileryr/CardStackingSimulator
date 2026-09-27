@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://4vck7xscjn2s"]
+
+[ext_resource type="Script" uid="uid://drksl163sjjom" path="res://scripts/mouse.gd" id="1_ouscy"]
+[ext_resource type="Texture2D" uid="uid://bvv4dq4dmc070" path="res://assets/mouse.png" id="2_ouscy"]
+[ext_resource type="AudioStream" uid="uid://dtq7e8bjak1c1" path="res://assets/sound/card1.ogg" id="3_iog6k"]
+[ext_resource type="AudioStream" uid="uid://byyybov5ionky" path="res://assets/sound/card3.ogg" id="4_dexx5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8f81w"]
+radius = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ab4p"]
+size = Vector2(2, 2)
+
+[node name="Mouse" type="CharacterBody2D" unique_id=959002154 node_paths=PackedStringArray("card_detection_area", "sprite", "lock_sprite")]
+z_index = 4
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+wall_min_slide_angle = 3.1415927
+script = ExtResource("1_ouscy")
+card_detection_area = NodePath("CardDetectionArea")
+sprite = NodePath("Sprite")
+lock_sprite = NodePath("LockSprite")
+
+[node name="CardDetectionArea" type="Area2D" parent="." unique_id=932737459]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDetectionArea" unique_id=1182429551]
+shape = SubResource("CircleShape2D_8f81w")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=976317094]
+position = Vector2(3, 3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_ouscy")
+hframes = 4
+
+[node name="LockSprite" type="Sprite2D" parent="." unique_id=90694061]
+visible = false
+top_level = true
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_ouscy")
+hframes = 4
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=722629672]
+shape = SubResource("RectangleShape2D_6ab4p")
+metadata/_edit_lock_ = true
+
+[node name="HoverSoundPlayer" type="AudioStreamPlayer" parent="." unique_id=101774776]
+stream = ExtResource("3_iog6k")
+
+[node name="GrabSoundPlayer" type="AudioStreamPlayer" parent="." unique_id=1816850561]
+stream = ExtResource("4_dexx5")
+
+[node name="LockSoundPlayer" type="AudioStreamPlayer" parent="." unique_id=474933363]
+stream = ExtResource("3_iog6k")
+volume_db = -5.0
+pitch_scale = 0.6

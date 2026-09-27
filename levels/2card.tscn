@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cbw3nmfy4ms3b"]
+
+[ext_resource type="PackedScene" uid="uid://cvi2xpo00fu4n" path="res://scenes/background.tscn" id="1_ekuds"]
+[ext_resource type="Texture2D" uid="uid://dgu7ertwv0oyx" path="res://assets/table.png" id="2_3hx0u"]
+[ext_resource type="PackedScene" uid="uid://bi8hih1f2bfs4" path="res://scenes/wincheck.tscn" id="3_3hx0u"]
+[ext_resource type="PackedScene" uid="uid://4vck7xscjn2s" path="res://scenes/mouse.tscn" id="4_js0vs"]
+[ext_resource type="PackedScene" uid="uid://c23xaro4p7uo3" path="res://scenes/card.tscn" id="5_fuwna"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_js0vs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuwna"]
+size = Vector2(1126, 336.5)
+
+[node name="2Card" type="Node2D" unique_id=139935079]
+
+[node name="Sprite2D" parent="." unique_id=761914451 instance=ExtResource("1_ekuds")]
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1893415840]
+position = Vector2(395, 711)
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_js0vs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Floor" unique_id=1184238467]
+position = Vector2(164, -412)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3hx0u")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor" unique_id=2137947047]
+position = Vector2(176, 25.25)
+shape = SubResource("RectangleShape2D_fuwna")
+metadata/_edit_lock_ = true
+
+[node name="cards" type="Node2D" parent="." unique_id=368532695]
+metadata/_edit_lock_ = true
+
+[node name="Card" parent="cards" unique_id=1166420115 instance=ExtResource("5_fuwna")]
+position = Vector2(222, 549)
+rotation = 1.5707964
+
+[node name="Card2" parent="cards" unique_id=93546430 instance=ExtResource("5_fuwna")]
+position = Vector2(198, 524)
+rotation = 1.5707964
+
+[node name="Mouse" parent="." unique_id=959002154 instance=ExtResource("4_js0vs")]
+position = Vector2(571, 241)
+
+[node name="Wincheck" parent="." unique_id=912320780 node_paths=PackedStringArray("hand") instance=ExtResource("3_3hx0u")]
+hand = NodePath("../Mouse")
+
+[node name="Goal" parent="Wincheck" index="1" unique_id=677523812]
+offset_left = 1.5
+offset_top = 392.0
+offset_right = 1234.5
+offset_bottom = 400.0
+
+[node name="GoalLabel" parent="Wincheck" index="2" unique_id=753808221]
+position = Vector2(82.5, 365)
+
+[node name="Control" parent="Wincheck" index="3" unique_id=2050840621]
+metadata/_edit_lock_ = true
+
+[node name="Time" parent="Wincheck/Control" index="2" unique_id=1590731255]
+offset_left = -95.0
+offset_top = 410.0
+offset_right = 95.0
+offset_bottom = 410.0
+
+[node name="Level" parent="Wincheck/Control" index="3" unique_id=2054917048]
+offset_left = -92.0
+offset_top = 370.0
+offset_right = 92.0
+offset_bottom = 370.0
+
+[editable path="Wincheck"]

@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://bi8hih1f2bfs4"]
+
+[ext_resource type="Script" uid="uid://puogacnycg8j" path="res://scripts/wincheck.gd" id="1_lbyum"]
+[ext_resource type="Texture2D" uid="uid://cehib6wl2l2g3" path="res://assets/dotted-line.png" id="3_4utda"]
+[ext_resource type="Texture2D" uid="uid://chqwy6ow1usir" path="res://assets/Goal.png" id="4_1t33d"]
+[ext_resource type="Script" uid="uid://cwrpdpkxcda8t" path="res://scripts/level_select_button.gd" id="4_oxukj"]
+
+[node name="Wincheck" type="Node2D" unique_id=912320780]
+script = ExtResource("1_lbyum")
+level_name = "2 Card"
+
+[node name="Checktimer" type="Timer" parent="." unique_id=1906253331]
+wait_time = 0.5
+autostart = true
+
+[node name="Goal" type="TextureRect" parent="." unique_id=677523812]
+offset_left = 1.0
+offset_top = 175.0
+offset_right = 1234.0
+offset_bottom = 183.0
+texture = ExtResource("3_4utda")
+stretch_mode = 1
+
+[node name="GoalLabel" type="Sprite2D" parent="." unique_id=753808221]
+position = Vector2(82, 148)
+texture = ExtResource("4_1t33d")
+
+[node name="Control" type="Control" parent="." unique_id=2050840621]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+metadata/_edit_lock_ = true
+
+[node name="BackgroundColorRect" type="ColorRect" parent="Control" unique_id=2002267296]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3529412)
+
+[node name="TimerLabel" type="Label" parent="Control" unique_id=1710459050]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 64
+text = "5"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="Control" unique_id=1590731255]
+visible = false
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = 414.0
+offset_right = 105.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "Time taken: 8:51"
+horizontal_alignment = 1
+
+[node name="Level" type="Label" parent="Control" unique_id=2054917048]
+visible = false
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = 372.0
+offset_right = 97.0
+offset_bottom = -205.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "Weather Report
+"
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="Control" unique_id=367025086]
+visible = false
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.5
+offset_top = 461.0
+offset_right = 34.5
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return?"
+script = ExtResource("4_oxukj")
+level_path = "res://scenes/level_select.tscn"
+metadata/_custom_type_script = "uid://cwrpdpkxcda8t"
+
+[node name="ExitButton" type="Button" parent="Control" unique_id=1140676628]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 533.0
+offset_top = 5.0
+offset_right = 570.0
+offset_bottom = -612.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit
+"
+script = ExtResource("4_oxukj")
+level_path = "res://scenes/level_select.tscn"
+metadata/_custom_type_script = "uid://cwrpdpkxcda8t"
+
+[connection signal="timeout" from="Checktimer" to="." method="check_timeout"]

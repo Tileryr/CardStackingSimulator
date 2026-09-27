@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c23xaro4p7uo3"]
+
+[ext_resource type="Script" uid="uid://bml4v1kujsgfo" path="res://scripts/card.gd" id="1_6u4wf"]
+[ext_resource type="Shader" uid="uid://dfsawqk5fcq4e" path="res://scripts/outline.gdshader" id="1_ktuci"]
+[ext_resource type="Texture2D" uid="uid://c1b1ron6cqcbt" path="res://assets/card.png" id="3_ktuci"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
+shader = ExtResource("1_ktuci")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/alpha_threshold = 0.0
+shader_parameter/outline_samples = 4
+shader_parameter/shade_color = Color(1, 1, 1, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fuwna"]
+shader = ExtResource("1_ktuci")
+shader_parameter/outline_color = Color(0.45490196, 0.46666667, 0.4745098, 0.7058824)
+shader_parameter/outline_size = 4.0000000596048
+shader_parameter/alpha_threshold = 0.0
+shader_parameter/outline_samples = 4
+shader_parameter/shade_color = Color(1, 1, 1, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ab4p"]
+radius = 4.0
+height = 214.0
+
+[node name="Card" type="RigidBody2D" unique_id=1166420115 node_paths=PackedStringArray("sprite", "collision_shape") groups=["card"]]
+material = SubResource("ShaderMaterial_lquwl")
+disable_mode = 1
+collision_mask = 3
+mass = 0.2
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_6u4wf")
+sprite = NodePath("Sprite")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1644455861]
+texture_filter = 3
+material = SubResource("ShaderMaterial_fuwna")
+instance_shader_parameters/enabled = false
+texture = ExtResource("3_ktuci")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=191737187]
+shape = SubResource("CapsuleShape2D_6ab4p")
+metadata/_edit_lock_ = true

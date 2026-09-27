@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://c45j2gg5mdpcw"]
+
+[ext_resource type="PackedScene" uid="uid://cvi2xpo00fu4n" path="res://scenes/background.tscn" id="1_5samd"]
+[ext_resource type="Texture2D" uid="uid://dgu7ertwv0oyx" path="res://assets/table.png" id="2_julpa"]
+[ext_resource type="PackedScene" uid="uid://4vck7xscjn2s" path="res://scenes/mouse.tscn" id="3_tx4ic"]
+[ext_resource type="PackedScene" uid="uid://c23xaro4p7uo3" path="res://scenes/card.tscn" id="4_agy65"]
+[ext_resource type="PackedScene" uid="uid://bi8hih1f2bfs4" path="res://scenes/wincheck.tscn" id="5_v8vdv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ab4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvmyw"]
+size = Vector2(1126, 336.5)
+
+[node name="Main" type="Node2D" unique_id=654006001]
+
+[node name="Sprite2D" parent="." unique_id=761914451 instance=ExtResource("1_5samd")]
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1740172837]
+position = Vector2(395, 711)
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_6ab4p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Floor" unique_id=569268183]
+position = Vector2(164, -412)
+scale = Vector2(2, 2)
+texture = ExtResource("2_julpa")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor" unique_id=1049995215]
+position = Vector2(176, 25.25)
+shape = SubResource("RectangleShape2D_bvmyw")
+metadata/_edit_lock_ = true
+
+[node name="Mouse" parent="." unique_id=343360723 instance=ExtResource("3_tx4ic")]
+position = Vector2(571, 241)
+
+[node name="cards" type="Node2D" parent="." unique_id=266664297]
+metadata/_edit_lock_ = true
+
+[node name="Card" parent="cards" unique_id=1166420115 instance=ExtResource("4_agy65")]
+position = Vector2(316, 452)
+
+[node name="Card2" parent="cards" unique_id=1554225758 instance=ExtResource("4_agy65")]
+position = Vector2(244, 457)
+
+[node name="Card3" parent="cards" unique_id=1250200286 instance=ExtResource("4_agy65")]
+position = Vector2(178, 455)
+
+[node name="Card4" parent="cards" unique_id=1038181342 instance=ExtResource("4_agy65")]
+position = Vector2(222, 457)
+
+[node name="Card5" parent="cards" unique_id=1280617006 instance=ExtResource("4_agy65")]
+position = Vector2(266, 458)
+
+[node name="Card6" parent="cards" unique_id=539676958 instance=ExtResource("4_agy65")]
+position = Vector2(288, 452)
+
+[node name="Card7" parent="cards" unique_id=1813780697 instance=ExtResource("4_agy65")]
+position = Vector2(200, 455)
+
+[node name="Card8" parent="cards" unique_id=819069646 instance=ExtResource("4_agy65")]
+position = Vector2(1053, 459)
+
+[node name="Card9" parent="cards" unique_id=598290453 instance=ExtResource("4_agy65")]
+position = Vector2(842, 451)
+
+[node name="Card10" parent="cards" unique_id=2027295227 instance=ExtResource("4_agy65")]
+position = Vector2(881, 450)
+
+[node name="Card11" parent="cards" unique_id=2125791960 instance=ExtResource("4_agy65")]
+position = Vector2(913, 451)
+
+[node name="Card12" parent="cards" unique_id=1736213746 instance=ExtResource("4_agy65")]
+position = Vector2(943, 463)
+
+[node name="Card13" parent="cards" unique_id=898713728 instance=ExtResource("4_agy65")]
+position = Vector2(968, 458)
+
+[node name="Card14" parent="cards" unique_id=1788160446 instance=ExtResource("4_agy65")]
+position = Vector2(998, 458)
+
+[node name="Card15" parent="cards" unique_id=822225021 instance=ExtResource("4_agy65")]
+position = Vector2(1030, 456)
+
+[node name="Wincheck" parent="." unique_id=912320780 node_paths=PackedStringArray("hand") instance=ExtResource("5_v8vdv")]
+hand = NodePath("../Mouse")
+level_name = "House of cards"
+metadata/_edit_lock_ = true
+
+[node name="Goal" parent="Wincheck" index="1" unique_id=677523812]
+offset_left = 3.5
+offset_top = 59.0
+offset_right = 1236.5
+offset_bottom = 67.0
+
+[node name="GoalLabel" parent="Wincheck" index="2" unique_id=753808221]
+position = Vector2(84.5, 32)
+
+[editable path="Wincheck"]

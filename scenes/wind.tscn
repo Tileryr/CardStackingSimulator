@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dyw8aatd7q0sj"]
+
+[ext_resource type="Script" uid="uid://cn1tfgsvkgxph" path="res://scripts/wind.gd" id="1_wx8gj"]
+
+[node name="Wind" type="Node2D" unique_id=1109645193 node_paths=PackedStringArray("speed_label")]
+script = ExtResource("1_wx8gj")
+speed_label = NodePath("Label")
+speed = 0.4
+
+[node name="Timer" type="Timer" parent="." unique_id=1084460108]
+wait_time = 0.1
+autostart = true
+
+[node name="Label" type="Label" parent="." unique_id=57176014]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Wind speed: 2.5"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]

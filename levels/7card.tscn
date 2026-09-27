@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://d7asro1bj1k8"]
+
+[ext_resource type="PackedScene" uid="uid://cvi2xpo00fu4n" path="res://scenes/background.tscn" id="1_8gwlh"]
+[ext_resource type="Texture2D" uid="uid://dgu7ertwv0oyx" path="res://assets/table.png" id="2_46ew0"]
+[ext_resource type="PackedScene" uid="uid://4vck7xscjn2s" path="res://scenes/mouse.tscn" id="3_b0cyy"]
+[ext_resource type="PackedScene" uid="uid://c23xaro4p7uo3" path="res://scenes/card.tscn" id="4_p0e1q"]
+[ext_resource type="PackedScene" uid="uid://bi8hih1f2bfs4" path="res://scenes/wincheck.tscn" id="5_a77el"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ab4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvmyw"]
+size = Vector2(1126, 336.5)
+
+[node name="Main" type="Node2D" unique_id=654006001]
+
+[node name="Sprite2D" parent="." unique_id=761914451 instance=ExtResource("1_8gwlh")]
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1740172837]
+position = Vector2(395, 711)
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_6ab4p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Floor" unique_id=569268183]
+position = Vector2(164, -412)
+scale = Vector2(2, 2)
+texture = ExtResource("2_46ew0")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor" unique_id=1049995215]
+position = Vector2(176, 25.25)
+shape = SubResource("RectangleShape2D_bvmyw")
+metadata/_edit_lock_ = true
+
+[node name="Mouse" parent="." unique_id=343360723 instance=ExtResource("3_b0cyy")]
+position = Vector2(571, 241)
+
+[node name="cards" type="Node2D" parent="." unique_id=266664297]
+metadata/_edit_lock_ = true
+
+[node name="Card" parent="cards" unique_id=1166420115 instance=ExtResource("4_p0e1q")]
+position = Vector2(155, 456)
+
+[node name="Card2" parent="cards" unique_id=1554225758 instance=ExtResource("4_p0e1q")]
+position = Vector2(244, 457)
+
+[node name="Card3" parent="cards" unique_id=1250200286 instance=ExtResource("4_p0e1q")]
+position = Vector2(178, 455)
+
+[node name="Card4" parent="cards" unique_id=1038181342 instance=ExtResource("4_p0e1q")]
+position = Vector2(222, 457)
+
+[node name="Card5" parent="cards" unique_id=1280617006 instance=ExtResource("4_p0e1q")]
+position = Vector2(266, 458)
+
+[node name="Card6" parent="cards" unique_id=539676958 instance=ExtResource("4_p0e1q")]
+position = Vector2(288, 452)
+
+[node name="Card7" parent="cards" unique_id=1813780697 instance=ExtResource("4_p0e1q")]
+position = Vector2(200, 455)
+
+[node name="Wincheck" parent="." unique_id=912320780 node_paths=PackedStringArray("hand") instance=ExtResource("5_a77el")]
+hand = NodePath("../Mouse")
+level_name = "7 Card"
+metadata/_edit_lock_ = true
